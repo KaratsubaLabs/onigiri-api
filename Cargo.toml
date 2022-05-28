@@ -1,0 +1,9 @@
+[package]
+name = "onigiri-api"
+version = "0.1.0"
+edition = "2018"
+authors = ["pinosaur"]
+description = "central aggregate api"
+repository = "https://github.com/KaratsubaLabs/onigiri-api"
+
+[dependencies]
