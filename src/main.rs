@@ -20,19 +20,22 @@ fn datetime() -> String {
 const DEFINE_EN_API_URL: &'static str = "https://api.dictionaryapi.dev/api/v2/entries/en";
 #[get("/")]
 async fn define() -> Status {
-    define_en_handler("poop").await;
+    define_en_handler("poop").await.unwrap();
     Status::Ok
 }
 
 async fn define_en_handler(word: &str) -> Result<(), reqwest::Error> {
 
     println!("en handler");
+    /*
     let client = reqwest::Client::builder()
         .timeout(std::time::Duration::from_millis(100))
         .build()?;
     let resp = client
         .get(format!("{}/{}", DEFINE_EN_API_URL, word))
         .send().await?;
+    */
+    let resp = reqwest::get(format!("{}/{}", DEFINE_EN_API_URL, word)).await?;
     println!("response {:?}", resp);
     Ok(())
 }
